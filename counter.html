@@ -1,0 +1,33 @@
+<!-- simplest counter -->
+
+<html>
+  <head>
+    <title>counter</title>
+  </head>
+
+  <body>
+    <button onClick="forwordClicks()">click on me for counter</button>
+    <button onClick="backwordClicks()">
+      click on me for reserve a counter
+    </button>
+    <p>clicks forword: <span id="container"></span></p>
+
+    <!-- javascript -->
+    <script type="text/javascript">
+      var counter = 0;
+
+      function forwordClicks() {
+        counter += 1;
+        document.getElementById("container").innerHTML = counter;
+      }
+
+      function backwordClicks() {
+        counter -= 1;
+        if (counter <= 0) {
+          counter = 0;
+        }
+        document.getElementById("container").innerHTML = counter;
+      }
+    </script>
+  </body>
+</html>
