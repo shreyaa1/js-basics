@@ -1,0 +1,43 @@
+
+
+<html>
+  <head>
+    <title>automatic counter</title>
+  </head>
+</html>
+<body>
+  <div>
+    <button
+      id="one"
+      onclick="startCount = setInterval(increase, 1000),  clearInterval(reverse)"
+    >
+      counter start button
+    </button>
+
+    <button onclick="clearInterval(startCount), clearInterval(reverse)">
+      counter reset button
+    </button>
+    <button
+      onclick=" reverse = setInterval(decrease, 1000), clearInterval(startCount)"
+    >
+      counter reverse button
+    </button>
+    <h3 id="container">0</h3>
+  </div>
+
+  <script>
+    var counter = 0;
+    function increase() {
+      var div = document.getElementById("container");
+      counter += 1;
+      div.innerHTML = counter;
+    }
+
+    const decrease = () => {
+      clearInterval(startCount);
+      var div = document.getElementById("container");
+      counter -= 1;
+      div.innerHTML = counter;
+    };
+  </script>
+</body>
