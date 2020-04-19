@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>get your age</title>
+  </head>
+
+  <body>
+    <input
+      name="age"
+      type="number"
+      value=""
+      id="age"
+      placeholder="enter your year of birth"
+    />
+    <button onclick="getAge()">Get your age</button>
+    <h2 id="cantainer">your age is:</h2>
+
+    <script>
+      const getAge = () => {
+        var birthYear = document.getElementById("age").value;
+
+        const age =
+          birthYear < 2020
+            ? 2020 - birthYear
+            : "&nbsp oops enter your correct age";
+
+        var div = (document.getElementById("cantainer").innerHTML =
+          "your age is:" + age);
+      };
+    </script>
+  </body>
+</html>

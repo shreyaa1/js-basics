@@ -1,5 +1,3 @@
-
-
 <html>
   <head>
     <title>automatic counter</title>
@@ -11,16 +9,16 @@
       id="one"
       onclick="startCount = setInterval(increase, 1000),  clearInterval(reverse)"
     >
-      counter start button
+      click to start counter
     </button>
 
     <button onclick="clearInterval(startCount), clearInterval(reverse)">
-      counter reset button
+      click to pause counter
     </button>
     <button
       onclick=" reverse = setInterval(decrease, 1000), clearInterval(startCount)"
     >
-      counter reverse button
+      click to reverse counter
     </button>
     <h3 id="container">0</h3>
   </div>

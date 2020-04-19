@@ -1,0 +1,126 @@
+<html>
+  <head>
+    <title>comments</title>
+  </head>
+  <body>
+    <img
+      src="https://cdn.baogiaothong.vn/files/news/2017/10/26/153339-5.jpg"
+      alt="Smiley face"
+      height="auto"
+      width="400"
+    ></img>
+    <h3>comment on the picture</h3>
+
+    <div id="comment-list">
+      <!-- <div id="comment-holder"></div> -->
+    </div>
+    <div id='btn-group'>
+        <button onclick="replyComment()">reply</button>
+           <div id="reply-holder" ></div>
+        <!-- <button onclick="editComment()">edit comment</button> -->
+    </div>
+ 
+<div id="comment-block">
+    <input id='comment' type="text" placeholder="type here" value=''/>
+    <button onclick="commentPost()">Post</button>
+</div>
+   
+<div id='reply-block'>
+    <input id='reply' type="text" placeholder="type here" value=''/>
+    <button onclick="replyPost()">reply Post</button>
+</div>
+
+
+
+
+
+
+    <!-- js -->
+    <script>
+    var commentHolder = document.getElementById('comment-holder');
+    var replyHolder = document.getElementById('reply-holder');
+    const comment = document.getElementById('comment');
+    const reply = document.getElementById('reply')
+    const commentBlock = document.getElementById('comment-block');
+    const replyBlock = document.getElementById('reply-block');
+    // document.getElementById('btn-group').style.display = 'none';
+
+    replyBlock.style.display = 'none';
+
+const adCommentId = () => {
+  var commentItem = document.querySelectorAll('.comment-item');
+for (var i = 0; i < commentItem.length; i++){
+    var commentItem = document.querySelectorAll('.comment-item');
+    commentItem[i].id = 'comment-item-' + i;   
+}
+}
+const adEditBtnId = () => {
+  var adEditBtnId = document.querySelectorAll('.comment-btn');
+for (var i = 0; i < adEditBtnId.length; i++){
+    var adEditBtnId = document.querySelectorAll('.comment-btn');
+    adEditBtnId[i].id = 'comment-btn-' + i;   
+}
+}
+
+
+
+
+
+   
+    
+    const commentPost =() => {
+      const commentValue = comment.value;
+      comment.value = '';
+      document.getElementById('btn-group').style.display = 'block';
+      var newItem = document.createElement("div")
+      newItem.className = 'comment-item'
+       var textnode = document.createTextNode(commentValue);  
+      newItem.appendChild(textnode); 
+       document.getElementById('comment-list').appendChild(newItem);
+
+    //  append btns
+    var newEditbtn = document.createElement("button")
+    newEditbtn.className = 'comment-btn'
+    newEditbtn.innerHTML = 'edit button';
+
+    newEditbtn.onclick = function(clickedId) {
+      const btnId = clickedId.target.id
+      console.log('newItem',newItem.textContent);
+      const ref = newItem.textContent
+
+      if(ref === ''){
+        return document.getElementById('comment-list').appendChild();
+      }
+      comment.value = ref;
+    };
+
+    document.getElementById('comment-list').appendChild(newEditbtn);
+
+    adCommentId()
+    adEditBtnId()
+    }
+
+   const editComment = (clickedId) => {
+    console.log('clickedId',clickedId)
+
+
+
+ // const ref = commentHolder.textContent;
+    // comment.value = ref;
+   }
+
+   const replyComment = () => {
+    commentBlock.style.display = 'none';
+    replyBlock.style.display = 'block';
+   }
+    
+  const replyPost = () => {
+   const ref =  reply.value;
+   replyHolder.innerHTML = ref;
+   reply.value = '';
+   replyBlock.style.display = 'none';
+   commentBlock.style.display = 'block';
+  }
+    </script>
+  </body>
+</html>
