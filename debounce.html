@@ -1,0 +1,26 @@
+<html>
+  <head> </head>
+  <body>
+    <input onkeypress="data()" />
+
+    <script>
+      let counter = 0;
+      const getData = () => {
+        console.log("fetching data from api", counter++);
+      };
+
+      const debounce = (fun, delay) => {
+        let timer;
+        return () => {
+          let context = this;
+          clearInterval(timer);
+          timer = setTimeout(() => {
+            fun.apply(context);
+          }, delay);
+        };
+      };
+
+      const data = debounce(getData, 300);
+    </script>
+  </body>
+</html>

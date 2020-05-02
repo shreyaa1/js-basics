@@ -1,0 +1,138 @@
+<html>
+  <head>
+    <title>Slider in js</title>
+
+    <style>
+      .wrapper {
+        max-width: 1172px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .heading {
+        text-align: center;
+      }
+      .slide {
+        position: relative;
+      }
+      .caption {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 24px;
+      }
+
+      img {
+        height: 500px;
+        width: 100%;
+      position: absolute
+        animation: fadeIn ease 3s;
+        -webkit-animation: fadeIn ease 3s;
+        -moz-animation: fadeIn ease 3s;
+        -o-animation: fadeIn ease 3s;
+        -ms-animation: fadeIn ease 3s;
+      }
+      .slide::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.7),
+          transparent 70%,
+          transparent
+        );
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .left,
+      .right {
+        position: absolute;
+        top: calc(50% - 15px);
+        padding: 18px;
+        background: white;
+        cursor: pointer;
+        opacity: 0.5;
+      }
+      .right {
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1 class="heading">Manual Slider</h1>
+      <div class="slide" style="display: block">
+        <img
+          src="https://s3-ap-southeast-1.amazonaws.com/he-public-data/Avengers3c9095c4.jpg"
+        />
+        <div class="caption">
+          "Marvel's The Avengers" redirects here. For the original comic book
+          characters, see The Avengers (comics). For the 2020 video game, see
+          Avengers (2020 video game). For other uses, see Avenger.
+        </div>
+      </div>
+      <div class="slide" style="display: none">
+        <img
+          src="https://s3-ap-southeast-1.amazonaws.com/he-public-data/Avengers1dde2dff.jpg"
+        />
+        <div class="caption">
+          Marvel's The Avengers[6] (classified under the name Marvel Avengers
+          Assemble in the United Kingdom and Ireland[3][7]), or simply The
+          Avengers, is a 2012 American superhero film based on the Marvel Comics
+          superhero team of the same name. Produced by Marvel Studios and
+          distributed by Walt Disney Studios Motion Pictures,[N 1]
+        </div>
+      </div>
+      <div class="slide" style="display: none">
+        <img
+          src="https://s3-ap-southeast-1.amazonaws.com/he-public-data/Avengers2f856ebb.jpg"
+        />
+        <div class="caption">
+          The film's development began when Marvel Studios received a loan from
+          Merrill Lynch in April 2005. After the success of the film Iron Man in
+          May 2008,
+        </div>
+      </div>
+      <a class="left" onclick="slider(-1)">❮</a>
+      <a class="right" onclick="slider(1)">❯</a>
+    </div>
+
+    <!-- js -->
+    <script>
+      var slideIndex = 1;
+
+      function slider(n) {
+        slideImage((slideIndex += n));
+      }
+
+      function slideImage(n) {
+        var slide = document.getElementsByClassName("slide");
+        if (n > slide.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slide.length;
+        }
+
+        for (var i = 0; i < slide.length; i++) {
+          slide[i].style.display = "none";
+        }
+        slide[slideIndex - 1].style.display = "block";
+      }
+    </script>
+  </body>
+</html>

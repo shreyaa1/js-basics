@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <input id="rows" type="number" value="" />
+    <input id="cols" type="number" value="" />
+    <button onclick="table()">Click</button>
+    <div id="table"></div>
+  </body>
+</html>
+
+<script>
+  const table = () => {
+    var rows = document.getElementById("rows").value;
+    var cols = document.getElementById("cols").value;
+    var theader = '<table border="1">\n';
+    var tfooter = "<table/>";
+    tbody = "";
+    console.log("body", tbody);
+    for (var i = 0; i < rows; i++) {
+      tbody += "<tr>";
+      console.log("body-", tbody);
+      for (var j = 0; j < cols; j++) {
+        tbody += "<td>";
+        tbody += "cell";
+        tbody += "</td>";
+      }
+      tbody += "</tr>\n";
+
+      document.getElementById("table").innerHTML = theader + tbody + tfooter;
+    }
+  };
+</script>

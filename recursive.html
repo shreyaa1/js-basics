@@ -1,0 +1,21 @@
+// question // sum(1)(2)(3)(4)(5)() == ??
+
+<html>
+  <head> </head>
+  <body>
+    <script>
+      // let sum = a => {
+      //   return b => {
+      //     if (b) {
+      //       return sum(a + b);
+      //     }
+      //     return a;
+      //   };
+      // };
+
+      let sum = a => b => (b ? sum(a + b) : a);
+
+      console.log(sum(1)(2)(3)(4)());
+    </script>
+  </body>
+</html>
