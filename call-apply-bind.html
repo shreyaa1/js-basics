@@ -1,9 +1,51 @@
 <html>
-    <head>
+  <head> </head>
+  <body>
+    <h2>
+      how call apply and bind works in js chek the console for result
+    </h2>
+    <script>
+      let name = {
+        firstName: "shreya",
+        lastName: "shukla",
+        fullName: function() {
+          console.log(this.firstName + " " + this.lastName);
+        }
+      };
+      name.fullName();
 
-    </head>
-    <body>
-        <script>
-            </script>
-    </body>
+      //  call it is a js predefine func which can borrow the func from different object
+
+      let newobj = {
+        firstName: "shreya 2",
+        lastName: "shukla 2"
+      };
+      name.fullName.call(newobj);
+
+      //    second thing what we can do is if we want to use a method multeple times we can put method out side
+      //    side of the Object and  and call it when ever need
+      // ex.  const fullName = function() {
+      //    console.log(this.firstName + " " + this.lastName);
+      //  }
+      // use it like. fullName.call(newobj)
+
+      // multiple parameter
+      const connectAll = function(homeTown, state) {
+        console.log(
+          this.firstName + " " + this.lastName + " " + homeTown + " " + state
+        );
+      };
+
+      connectAll.call(newobj, "delhi", "delhi");
+
+      //   apply
+      connectAll.apply(newobj, ["delhi", "some"]);
+
+      //bind
+
+      // does not invoke directly but gives the copy of the same method which we can use later by calling it
+      let connectName = connectAll.bind(newobj, "jhansi", "UP");
+      connectName();
+    </script>
+  </body>
 </html>

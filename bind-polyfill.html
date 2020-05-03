@@ -1,0 +1,34 @@
+<html>
+  <head> </head>
+  <body>
+    <h2>
+      bind Polyfill
+    </h2>
+    <script>
+      let name = {
+        firstName: "shreya",
+        lastName: "shukla"
+      };
+
+      let fullName = function(state, country) {
+        console.log(
+          this.firstName + " " + this.lastName + " " + state + " " + country
+        );
+      };
+
+      let printName = fullName.bind(name, "delhi");
+      printName("india");
+
+      Function.prototype.myBind = function(...args) {
+        obj = this;
+        params = args.slice(1);
+        return function(...args2) {
+          obj.apply(args[0], [...params, ...args2]);
+        };
+      };
+
+      let printMyName = fullName.myBind(name, "UP");
+      printMyName("india");
+    </script>
+  </body>
+</html>
