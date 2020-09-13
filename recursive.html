@@ -1,21 +1,105 @@
 // question // sum(1)(2)(3)(4)(5)() == ??
 
 <html>
-  <head> </head>
-  <body>
-    <script>
-      // let sum = a => {
-      //   return b => {
-      //     if (b) {
-      //       return sum(a + b);
-      //     }
-      //     return a;
-      //   };
-      // };
 
-      let sum = a => b => (b ? sum(a + b) : a);
+<head> </head>
 
-      console.log(sum(1)(2)(3)(4)());
-    </script>
-  </body>
+<body>
+  <script>
+    // let sum = a => {
+    //   return b => {
+    //     if (b) {
+    //       return sum(a + b);
+    //     }
+    //     return a;
+    //   };
+    // };
+
+    let sum = a => b => (b ? sum(a + b) : a);
+
+    console.log(sum(1)(2)(3)(4)());
+
+
+
+    // example 2
+    // shift d at the last of the Array
+
+
+    function rotLeft(d, arr = []) {
+      var lastElem = arr[arr.length - 1];
+      var firstElem = arr.shift()
+      arr.push(firstElem);
+      console.log(lastElem)
+      if (firstElem === d) {
+        console.log(arr)
+        return arr
+      }
+      else rotLeft(d, arr);
+    }
+
+    rotLeft(4, [1, 2, 3, 4, 5])
+
+
+    // example 4
+    // check how many  same numberof  pair do we have  in array
+
+    let count = 0;
+    function sockMerchant(arr) {
+      firstElem = arr[0]
+      var array = arr.filter((num) => {
+        return num === firstElem
+      });
+
+      var updatedArr = arr.filter((item) => {
+        return !array.includes(item);
+      })
+      counter = count + array.length / 2;
+      count = Math.floor(counter);
+      if (updatedArr.length > 0) {
+
+        return sockMerchant(updatedArr)
+      }
+      return count;
+
+
+    }
+
+    console.log(sockMerchant([1, 1, 1, 2, 2, 3, 3, 3, 4, 3]))
+
+
+
+
+
+    // example 3
+    // search the country name based on code 
+
+    let count = 1;
+    async function getCountryName(code) {
+      count++;
+      var value = await fetch(`https://jsonmock.hackerrank.com/api/countries?page=${count}`)
+      const response = await value.json();
+      const qa = response.data.filter(country => {
+        if (country.alpha2Code === code) {
+          console.log(country.name)
+          return country.name
+        }
+      });
+
+      if (qa.length) {
+        return qa[0];
+      } else {
+        return getCountryName(code)
+      }
+
+
+    }
+    getCountryName('TF')
+
+
+
+
+
+  </script>
+</body>
+
 </html>
